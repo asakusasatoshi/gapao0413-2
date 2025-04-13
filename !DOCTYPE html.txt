@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chef Ganesa｜ガパオライス計算アプリ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    input {
+      padding: 0.5rem;
+      width: 100%;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    h1, h2 {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+    }
+    ul {
+      padding-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🥚 Chef Ganesa｜ガパオライス分量計算アプリ</h1>
+
+  <label for="servings">人数を入力：</label>
+  <input type="number" id="servings" value="1" min="1" />
+
+  <div id="output"></div>
+
+  <script>
+    const calc = (amount, servings) => (amount * servings).toFixed(1);
+
+    const render = () => {
+      const servings = Number(document.getElementById("servings").value);
+      const o = document.getElementById("output");
+
+      o.innerHTML = `
+        <h2>🥩 炒め物パート</h2>
+        <ul>
+          <li>豚肩ロース：${calc(130, servings)}g</li>
+          <li>にんにく：${calc(4.3, servings)}g</li>
+          <li>プリッキーヌ（炒め用）：${calc(1, servings)}g</li>
+          <li>プリッキーヌ（辛さ調整）：${calc(1, servings)}g</li>
+          <li>ホーリーバジル（炒め用）：${calc(4.3, servings)}g</li>
+          <li>ホーリーバジル（仕上げ用）：${calc(8.7, servings)}g</li>
+          <li>白こしょうホール：${calc(0.17, servings)}g</li>
+          <li>ラード／チーユー：${calc(4, servings)}g</li>
+          <li>パームシュガー：${calc(3.5, servings)}g</li>
+          <li>ホーリーバジルパウダー：${calc(0.2, servings)}g</li>
+          <li>卵（カイダーオ）：${calc(1, servings)}個</li>
+          <li>ナンプラー・プリック（固定）：15g／食</li>
+          <li>オールインワンソース合計：${calc(31.9, servings)}g
+            <ul>
+              <li>ナンプラー：${calc(10.47, servings)}g</li>
+              <li>シーユーダム：${calc(4.2, servings)}g</li>
+              <li>シーユーカオ：${calc(4, servings)}g</li>
+              <li>シーズニングソース：${calc(2.1, servings)}g</li>
+              <li>オイスターソース：${calc(11.2, servings)}g</li>
+            </ul>
+          </li>
+          <li>きゅうりスライス：${calc(2, servings)}g</li>
+        </ul>
+
+        <h2>🍚 ジャスミンライスパート</h2>
+        <ul>
+          <li>ジャスミンライス：${calc(180, servings)}g</li>
+          <li>バイトゥーイ：${calc(1, servings)}g</li>
+          <li>炊飯用の水：${calc(205.3, servings)}ml</li>
+          <li>ごはん提供量（目安）：並盛240g／大盛300g</li>
+        </ul>
+      `;
+    };
+
+    document.getElementById("servings").addEventListener("input", render);
+    render();
+  </script>
+</body>
+</html>
